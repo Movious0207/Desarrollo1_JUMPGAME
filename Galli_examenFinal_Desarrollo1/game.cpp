@@ -8,6 +8,10 @@ void Game(Screen& screen)
     Texture gameBack = LoadTexture("resources/Background/back.png");
     Texture gameFront = LoadTexture("resources/Background/game.png");
 
+    Texture ButtonTexture = LoadTexture("resources/Buttons/buttons.png");
+
+    Vector2 backGroundPos = { 0,0 };
+
     const int screenWidth = 800;
     const int screenHeight = 800;
 
@@ -23,8 +27,8 @@ void Game(Screen& screen)
 
     Button button[2]
     {
-        { screenWidth / 2 - screenWidth / 8, screenHeight / 2, screenWidth / 4, 50.0f },
-        { screenWidth / 2 - screenWidth / 8, screenHeight / 2 * 1.2, screenWidth / 4, 50.0f }
+        { screenWidth / 2 - screenWidth / 8, screenHeight / 2, screenWidth / 4, 200.0f },
+        { screenWidth / 2 - screenWidth / 8, screenHeight / 2 * 1.3, screenWidth / 4, 200.0f }
     };
     button[0].text = "Resume";
     button[1].text = "Main Menu";
@@ -91,8 +95,6 @@ void Game(Screen& screen)
 
             BeginDrawing();
 
-            Vector2 backGroundPos = { 0,0 };
-
             DrawTextureEx(gameBack, backGroundPos, 0, 10, WHITE);
             DrawTextureEx(gameFront, backGroundPos, 0, 3, WHITE);
 
@@ -113,7 +115,8 @@ void Game(Screen& screen)
                 ClearBackground(GRAY);
                 for (int i = 0; i < 2; i++)
                 {
-                    DrawRectangleRec(button[i].rect, WHITE);
+                    Vector2 position{ button[i].rect.x,button[i].rect.y };
+                    DrawTextureEx(ButtonTexture, position, 0, 3, WHITE);
                     DrawText(button[i].text, button[i].rect.x + 20, button[i].rect.y + 20, 20, BLACK);
                 }
             }
@@ -166,7 +169,8 @@ void Game(Screen& screen)
 
             DrawRectangleRec(player, BLUE);
 
-            ClearBackground(DARKGRAY);
+            DrawTextureEx(gameBack, backGroundPos, 0, 10, WHITE);
+            DrawTextureEx(gameFront, backGroundPos, 0, 3, WHITE);
 
             DrawText("GAME OVER", screenWidth / 4 + 80, screenHeight / 4, 60, WHITE);
             DrawText("Final Score:", screenWidth / 4 + 80, screenHeight / 3, 40, WHITE);
@@ -174,7 +178,8 @@ void Game(Screen& screen)
 
             for (int i = 0; i < 2; i++)
             {
-                DrawRectangleRec(button[i].rect, WHITE);
+                Vector2 position{ button[i].rect.x,button[i].rect.y };
+                DrawTextureEx(ButtonTexture, position, 0, 3, WHITE);
                 DrawText(button[i].text, button[i].rect.x + 20, button[i].rect.y + 20, 20, BLACK);
             }
 
@@ -188,6 +193,8 @@ void Game(Screen& screen)
     }
     UnloadTexture(gameBack);
     UnloadTexture(gameFront);
+
+    UnloadTexture(ButtonTexture);
 }
 
 void UpdatePlayer(Rectangle& player, Vector2& speed, float delta, bool& canJump, bool& gameOver)

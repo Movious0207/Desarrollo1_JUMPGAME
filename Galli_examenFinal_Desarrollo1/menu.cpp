@@ -7,6 +7,8 @@ void Menu(Screen& screen)
 	Texture menuBack = LoadTexture("resources/Background/back.png");
 	Texture menuFront = LoadTexture("resources/Background/menu.png");
 
+	Texture ButtonTexture = LoadTexture("resources/Buttons/buttons.png");
+
 	SetExitKey(KEY_ESCAPE);
 
 	float middleX = GetScreenWidth() / 2;
@@ -16,9 +18,9 @@ void Menu(Screen& screen)
 
 	Button buttons[3] =
 	{
-		{ middleX - middleX / 4, middleY, middleX / 2, 50.0f},
-		{ middleX - middleX / 4, middleY * 1.2, middleX / 2, 50.0f },
-		{ middleX - middleX / 4, middleY * 1.4, middleX / 2, 50.0f }
+		{ middleX - middleX / 4, middleY, middleX / 2, 200.0f},
+		{ middleX - middleX / 4, middleY * 1.3, middleX / 2, 200.0f },
+		{ middleX - middleX / 4, middleY * 1.6, middleX / 2, 200.0f }
 	};
 	buttons[0].screento = Screen::game;
 	buttons[1].screento = Screen::credits;
@@ -43,7 +45,8 @@ void Menu(Screen& screen)
 		
 		for (int i = 0; i < 3; i++)
 		{
-			DrawRectangleRec(buttons[i].rect, GRAY);
+			Vector2 position{buttons[i].rect.x,buttons[i].rect.y };
+			DrawTextureEx(ButtonTexture, position, 0, 3, WHITE);
 			DrawText(buttons[i].text, buttons[i].rect.x + 20, buttons[i].rect.y + 20, 20, BLACK);
 		}
 
@@ -56,6 +59,7 @@ void Menu(Screen& screen)
 	}
 	UnloadTexture(menuBack);
 	UnloadTexture(menuFront);
+	UnloadTexture(ButtonTexture);
 }
 
 void ButtonUpdate(Button button, Screen& screen)
