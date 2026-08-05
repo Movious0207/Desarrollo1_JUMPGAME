@@ -12,6 +12,8 @@ void Game(Screen& screen)
 
     Texture PlayerTexture = LoadTexture("resources/Player/player_character.png");
 
+    Texture PlatformTexture = LoadTexture("resources/Platform/platform.png");
+
     Vector2 backGroundPos = { 0,0 };
 
     const int screenWidth = 800;
@@ -105,7 +107,8 @@ void Game(Screen& screen)
 
             for (int i = 0; i < 5; i++)
             {
-                DrawRectangleRec(platform[i], BLACK);
+                Vector2 platPos = { platform[i].x,platform[i].y };
+                DrawTextureEx(PlatformTexture, platPos, 0, 1, WHITE);
             }
 
             DrawTextureEx(PlayerTexture, playerPos, 0, 1, WHITE);
@@ -169,11 +172,11 @@ void Game(Screen& screen)
 
             for (int i = 0; i < 5; i++)
             {
-                DrawRectangleRec(platform[i], BLACK);
+                Vector2 platPos = { platform[i].x,platform[i].y };
+                DrawTextureEx(PlatformTexture, platPos, 0, 1, WHITE);
             }
 
             DrawTextureEx(PlayerTexture, playerPos,0,1, WHITE);
-            //DrawRectangleRec(player, BLUE);
 
             DrawTextureEx(gameBack, backGroundPos, 0, 10, WHITE);
             DrawTextureEx(gameFront, backGroundPos, 0, 3, WHITE);
@@ -197,11 +200,12 @@ void Game(Screen& screen)
             screen = Screen::exit;
         }
     }
+
     UnloadTexture(gameBack);
     UnloadTexture(gameFront);
-
     UnloadTexture(ButtonTexture);
     UnloadTexture(PlayerTexture);
+    UnloadTexture(PlatformTexture);
 }
 
 void UpdatePlayer(Rectangle& player, Vector2& speed, float delta, bool& canJump, bool& gameOver)
