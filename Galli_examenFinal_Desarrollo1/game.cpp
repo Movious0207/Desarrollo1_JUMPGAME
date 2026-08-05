@@ -1,5 +1,7 @@
 #include "game.h"
 
+static Sound jumpSound;
+static Music gameMusic;
 
 void Game(Screen& screen) 
 {
@@ -13,6 +15,9 @@ void Game(Screen& screen)
     Texture PlayerTexture = LoadTexture("resources/Player/player_character.png");
 
     Texture PlatformTexture = LoadTexture("resources/Platform/platform.png");
+
+    jumpSound = LoadSound("resources/Audio/Jump.mp3");
+    gameMusic = LoadMusicStream("resources/Audio/GameMusic.mp3");
 
     Vector2 backGroundPos = { 0,0 };
 
@@ -84,6 +89,12 @@ void Game(Screen& screen)
             {
                 UpdatePlayer(player, speed, deltatime, canJump, gameOver);
                 PlatformCheck(player, speed, deltatime, canJump, platform, 5, score);
+
+                if (!IsMusicStreamPlaying(gameMusic))
+                {
+                    PlayMusicStream(gameMusic);
+                }
+                UpdateMusicStream(gameMusic);
             }
             else if (paused)
             {
@@ -229,6 +240,7 @@ void UpdatePlayer(Rectangle& player, Vector2& speed, float delta, bool& canJump,
     {
         speed.y = -600.0f;
         canJump = false;
+        PlaySound(jumpSound);
     }
 
     if (player.y > GetScreenHeight())

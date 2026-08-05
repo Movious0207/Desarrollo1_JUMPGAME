@@ -12,7 +12,7 @@ int main(void)
 
     InitWindow(screenWidth, screenHeight, "Infinite Jumper");
     SetTargetFPS(60);
-
+    InitAudioDevice();
     srand(time(NULL));
 
     bool isPlaying = true;
@@ -41,6 +41,7 @@ int main(void)
     }
 
     CloseWindow();
+    CloseAudioDevice();
 
     return 0;
 }

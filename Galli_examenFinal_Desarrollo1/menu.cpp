@@ -9,6 +9,8 @@ void Menu(Screen& screen)
 
 	Texture ButtonTexture = LoadTexture("resources/Buttons/buttons.png");
 
+	Music gameMusic = LoadMusicStream("resources/Audio/GameMusic.mp3");
+
 	SetExitKey(KEY_ESCAPE);
 
 	float middleX = GetScreenWidth() / 2;
@@ -32,6 +34,12 @@ void Menu(Screen& screen)
 
 	while (screen == Screen::mainMenu)
 	{
+		if (!IsMusicStreamPlaying(gameMusic))
+		{
+			PlayMusicStream(gameMusic);
+		}
+		UpdateMusicStream(gameMusic);
+
 		for (int i = 0; i < 3; i++)
 		{
 			ButtonUpdate(buttons[i], screen);
