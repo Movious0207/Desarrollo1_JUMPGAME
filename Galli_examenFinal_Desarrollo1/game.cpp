@@ -5,6 +5,9 @@ void Game(Screen& screen)
 {
     SetExitKey(NULL);
 
+    Texture gameBack = LoadTexture("resources/Background/back.png");
+    Texture gameFront = LoadTexture("resources/Background/game.png");
+
     const int screenWidth = 800;
     const int screenHeight = 800;
 
@@ -88,7 +91,10 @@ void Game(Screen& screen)
 
             BeginDrawing();
 
-            ClearBackground(LIGHTGRAY);
+            Vector2 backGroundPos = { 0,0 };
+
+            DrawTextureEx(gameBack, backGroundPos, 0, 10, WHITE);
+            DrawTextureEx(gameFront, backGroundPos, 0, 3, WHITE);
 
             for (int i = 0; i < 5; i++)
             {
@@ -180,6 +186,8 @@ void Game(Screen& screen)
             screen = Screen::exit;
         }
     }
+    UnloadTexture(gameBack);
+    UnloadTexture(gameFront);
 }
 
 void UpdatePlayer(Rectangle& player, Vector2& speed, float delta, bool& canJump, bool& gameOver)

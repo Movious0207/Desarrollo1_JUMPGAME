@@ -4,10 +4,15 @@ void ButtonUpdate(Button button, Screen& screen);
 
 void Menu(Screen& screen)
 {
+	Texture menuBack = LoadTexture("resources/Background/back.png");
+	Texture menuFront = LoadTexture("resources/Background/menu.png");
+
 	SetExitKey(KEY_ESCAPE);
 
 	float middleX = GetScreenWidth() / 2;
 	float middleY = GetScreenHeight() / 2;
+
+	Vector2 middle = { 0, 0 };
 
 	Button buttons[3] =
 	{
@@ -31,8 +36,8 @@ void Menu(Screen& screen)
 		}
 
 		BeginDrawing();
-
-		ClearBackground(LIGHTGRAY);
+		DrawTextureEx(menuBack, middle,0,10, WHITE);
+		DrawTextureEx(menuFront, middle, 0, 3, WHITE);
 
 		DrawText("JUMP GAME", middleX - 100, 120, 40, WHITE);
 		
@@ -49,6 +54,8 @@ void Menu(Screen& screen)
 			screen = Screen::exit;
 		}
 	}
+	UnloadTexture(menuBack);
+	UnloadTexture(menuFront);
 }
 
 void ButtonUpdate(Button button, Screen& screen)
