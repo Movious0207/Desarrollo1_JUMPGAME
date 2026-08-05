@@ -41,7 +41,7 @@ void Menu(Screen& screen)
 		DrawTextureEx(menuBack, backgroundPos,0,10, WHITE);
 		DrawTextureEx(menuFront, backgroundPos, 0, 3, WHITE);
 
-		DrawText("JUMP GAME", middleX - 100, 120, 40, WHITE);
+		DrawText("FROG JUMP", middleX - 100, 120, 40, WHITE);
 		
 		for (int i = 0; i < 3; i++)
 		{

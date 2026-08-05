@@ -34,6 +34,13 @@ void Credits(Screen& screen)
 
 		DrawText("Credits", screenWidth / 2 - 100, 120, 40, WHITE);
 
+		DrawText("Game made by: Lucas Galli", screenWidth / 3 - 100, 300, 40, WHITE);
+
+		DrawText("Art made by Lucas galli", screenWidth / 3 - 100, 400, 40, WHITE);
+
+		DrawText("Background (free sky with clouds background) by craftpix.net", screenWidth / 4 - 100, 500, 20, WHITE);
+
+		DrawText("Thanks for playing!", screenWidth / 3 - 50, 600, 40, WHITE);
 
 		Vector2 position{ button.rect.x,button.rect.y };
 		DrawTextureEx(ButtonTexture, position, 0, 3, WHITE);
