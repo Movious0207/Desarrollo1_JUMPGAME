@@ -172,6 +172,8 @@ void Game(Screen& screen)
                     platform[2] = { 500.0f, 400.0f, 100.0f, 20.0f };
                     platform[3] = { 250.0f, 250.0f, 100.0f, 20.0f };
                     platform[4] = { 400.0f, 100.0f, 100.0f, 20.0f };
+
+                    button[0].text = "Resume";
                 }
                 if (CheckCollisionPointRec(GetMousePosition(), button[1].rect))
                 {
