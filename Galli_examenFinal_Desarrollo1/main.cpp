@@ -3,6 +3,7 @@
 #include "raylib.h"
 #include "game.h"
 #include "menu.h"
+#include "credits.h"
 
 int main(void)
 {
@@ -30,7 +31,9 @@ int main(void)
         case Screen::game:
             Game(actualScreen);
             break;
-
+        case Screen::credits:
+            Credits(actualScreen);
+            break;
         default:
             isPlaying = false;
             break;

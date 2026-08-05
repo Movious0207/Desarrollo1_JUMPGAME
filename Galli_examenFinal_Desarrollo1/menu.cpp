@@ -14,7 +14,7 @@ void Menu(Screen& screen)
 	float middleX = GetScreenWidth() / 2;
 	float middleY = GetScreenHeight() / 2;
 
-	Vector2 middle = { 0, 0 };
+	Vector2 backgroundPos = { 0, 0 };
 
 	Button buttons[3] =
 	{
@@ -38,8 +38,8 @@ void Menu(Screen& screen)
 		}
 
 		BeginDrawing();
-		DrawTextureEx(menuBack, middle,0,10, WHITE);
-		DrawTextureEx(menuFront, middle, 0, 3, WHITE);
+		DrawTextureEx(menuBack, backgroundPos,0,10, WHITE);
+		DrawTextureEx(menuFront, backgroundPos, 0, 3, WHITE);
 
 		DrawText("JUMP GAME", middleX - 100, 120, 40, WHITE);
 		
