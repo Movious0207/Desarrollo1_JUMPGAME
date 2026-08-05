@@ -10,6 +10,8 @@ void Game(Screen& screen)
 
     Texture ButtonTexture = LoadTexture("resources/Buttons/buttons.png");
 
+    Texture PlayerTexture = LoadTexture("resources/Player/player_character.png");
+
     Vector2 backGroundPos = { 0,0 };
 
     const int screenWidth = 800;
@@ -49,8 +51,11 @@ void Game(Screen& screen)
 
     while (screen == Screen::game)
     {
+        Vector2 playerPos = { player.x - player.width / 2,player.y - player.height / 2 };
+        
         float deltatime = GetFrameTime();
         char drawScore[10];
+
         sprintf_s(drawScore, "%d", (int)score);
         if (!gameOver)
         {
@@ -103,7 +108,7 @@ void Game(Screen& screen)
                 DrawRectangleRec(platform[i], BLACK);
             }
 
-            DrawRectangleRec(player, BLUE);
+            DrawTextureEx(PlayerTexture, playerPos, 0, 1, WHITE);
 
             DrawText("Score:", screenWidth / 4 * 3, 40, 40, WHITE);
             DrawText(drawScore, screenWidth / 4 * 3 + 150, 40, 40, WHITE);
@@ -167,7 +172,8 @@ void Game(Screen& screen)
                 DrawRectangleRec(platform[i], BLACK);
             }
 
-            DrawRectangleRec(player, BLUE);
+            DrawTextureEx(PlayerTexture, playerPos,0,1, WHITE);
+            //DrawRectangleRec(player, BLUE);
 
             DrawTextureEx(gameBack, backGroundPos, 0, 10, WHITE);
             DrawTextureEx(gameFront, backGroundPos, 0, 3, WHITE);
@@ -195,6 +201,7 @@ void Game(Screen& screen)
     UnloadTexture(gameFront);
 
     UnloadTexture(ButtonTexture);
+    UnloadTexture(PlayerTexture);
 }
 
 void UpdatePlayer(Rectangle& player, Vector2& speed, float delta, bool& canJump, bool& gameOver)
