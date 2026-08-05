@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{6eafa0da-e04f-48cd-886c-ab019329db08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Screens">
+      <UniqueIdentifier>{a47da435-0402-4e10-a1fc-b669fc6679bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Screens\menu">
+      <UniqueIdentifier>{c01eb451-d1dd-4fee-a42a-cd7b67bdead5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Screens\credits">
+      <UniqueIdentifier>{83b156c9-e5b7-432b-a91e-cc67eeffed6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Screens\game">
+      <UniqueIdentifier>{94eb94cb-3f03-4aa1-9942-5cc298dd1aac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\screens\menu\menu.cpp">
+      <Filter>Archivos de origen\Screens\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\screens\credits\credits.cpp">
+      <Filter>Archivos de origen\Screens\credits</Filter>
+    </ClCompile>
+    <ClCompile Include="src\screens\game\game.cpp">
+      <Filter>Archivos de origen\Screens\game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\screens\menu\menu.h">
+      <Filter>Archivos de origen\Screens\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\screens\credits\credits.h">
+      <Filter>Archivos de origen\Screens\credits</Filter>
+    </ClInclude>
+    <ClInclude Include="src\screens\game\game.h">
+      <Filter>Archivos de origen\Screens\game</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

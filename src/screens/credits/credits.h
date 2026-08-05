@@ -1,4 +1,4 @@
 #pragma once
-#include "game.h"
+#include "../game/game.h"
 
 void Credits(Screen& screen);

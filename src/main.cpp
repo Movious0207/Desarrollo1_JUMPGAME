@@ -1,9 +1,9 @@
 #include <iostream>
 #include <ctime>
 #include "raylib.h"
-#include "game.h"
-#include "menu.h"
-#include "credits.h"
+#include "screens/game/game.h"
+#include "screens/menu/menu.h"
+#include "screens/credits/credits.h"
 
 int main(void)
 {
